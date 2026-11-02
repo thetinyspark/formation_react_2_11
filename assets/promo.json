@@ -1,0 +1,9 @@
+{
+  "id": 6,
+  "name": "Call Of Duty",
+  "price": 35.0,
+  "description": "A FPS game.",
+  "img": "/assets/img/cod.jpg",
+  "platform": "N64"
+}
+

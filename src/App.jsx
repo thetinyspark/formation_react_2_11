@@ -1,54 +1,69 @@
 import { useEffect, useState } from 'react';
 import PageHeader from './components/comp/PageHeader';
 import Catalog from './components/screens/Catalog';
+import ProductCard from './components/comp/ProductCard';
 
 
 export default function App() {
 
   const [catalog,setCatalog] = useState([]);
+  const [promo,setPromo] = useState({
+    id: 0, 
+    description: "", 
+    name: "", 
+    price: 0, 
+    img: "", 
+    platform: ""
+  });
 
   useEffect( 
-    // est lancé automatiquement par React lorsque le composant est "monté"
-    // ce qui veut dire qu'il est prêt à être utilisé par le moteur
-    ()=>{
-      // on emploie la fonction native du Javascript "fetch", 
-      // pour aller les données contenues à une certaine adresse URL
 
-      // fetch est une fonctionnalité qui nous renvoie, non pas les données 
-      // contenues à l'adresse passée en paramètre, mais un objet standard, 
-      // de type Promise, qui comme son nom l'indique, nous promets de nous 
-      // renvoyer les données si elles sont accessibles, sinon, il nous renverra 
-      // une erreur.
-      window.fetch("/assets/catalog.json").then(
-        (response)=>{
-          response.json().then(
-            (data)=>{
-              console.log(data);
-              setCatalog(data);
-            }
-          ).catch(
-            (reason)=>{
-              console.error(reason);
-            }
-          )
+    ()=>{
+      // version la plus raccourcie de la fonction
+      const getDataFromURLShortVersion = async (u)=>await (await fetch(u)).json();
+      const getDataFormUrl = async (url) =>{
+        // await est un mot clé utilisable dans les fonctions asynchrones (async)
+        // il permet de mettre en pause l'éxécution de la fonction ( et uniquement de cette fonction)
+        // durant le temps nécessaire à la résolution de la promesse.
+        // Une fois la promesse résolue on peut attraper les données qu'elle nous a promis directement
+        // via assignation à une variable située à gauche du await
+
+        // la syntaxe await permet d'encapsuler les éventuelles erreur de résolution 
+        // de données (attrapées via .catch avant ça) avec un bloc try/catch
+        try{
+          const response = await window.fetch(url);
+          const data = await response.json();
+          return data;
         }
-      ).catch(
-        (reason)=>{
-          console.error(reason);
+        catch(error){
+          console.error(error);
         }
-      );
+      }
+
+      const refresh = async()=>{
+        try{
+          // On emploie l'utilitaire Promise.all, pour lui envoyer nos deux promesses
+          // qui se chargent d'aller récupérer les données au sein des nos urls
+          // les fonctions marquées comme asynchrones renvoient toujours de promesses
+          const [catalogData, promoData] = await Promise.all([
+            getDataFormUrl("/assets/catalog.json"), 
+            getDataFormUrl("/assets/promo.json")
+          ]);
+          setCatalog(catalogData); 
+          setPromo(promoData);
+
+        }catch(error){ console.error(error) }
+      }
+
+      refresh();
     }, 
-    [] // <- en lui donnant un tableau dépendances vide, on précise à React
-    // que l'on souhaite utiliser useEffect uniquement au moment du montage
-    // si dans le tableau de dépendance, on envoie des états, alors, chaque fois
-    // que ces états seront actualisés, la fonction contenue dans useEffect 
-    // sera relancée
+    []
   )
   return (
-    // Le Fragment ajoute le footer sans créer d'élément DOM englobant superflu.
     <>
       <main className="app-shell">
         <PageHeader/>
+        <ProductCard product={promo}/>
         <Catalog products={catalog}/>
       </main>
       <footer className="course-note">Footer</footer>
