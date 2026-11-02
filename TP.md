@@ -1,6 +1,12 @@
-TP n°3
+TP n°4
 
-- Créez un composant ProductCard.jsx et envoyez-lui à travers les props
-les infos du produit à afficher. (+ utilisez les prop types)
+- Créez un composant nommé Catalog.jsx et envoyez lui dans ses props, 
+la liste des produits à afficher
 
-- Puis affichez autant de composant ProductCard qu'il y a des produits dans le catalogue
+- Même chose pour un composant nommé CatalogFilter.jsx qui va 
+afficher la liste des plateformes, envoyez lui aussi la liste 
+des produits à partir de laquelle il construira la liste unique 
+des plateformes
+
+
+- Puis, intégrez ces deux composants à votre App.jsx
