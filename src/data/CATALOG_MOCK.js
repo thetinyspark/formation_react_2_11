@@ -22,30 +22,6 @@ const CATALOG_MOCK = [
     "description": "A platform game.",
     "img": "/assets/img/mario.png",
     "platform": "NES"
-  },
-  {
-    "id": 4,
-    "name": "Call Of Duty",
-    "price": 59.99,
-    "description": "A FPS game.",
-    "img": "/assets/img/cod.jpg",
-    "platform": "Switch"
-  },
-  {
-    "id": 5,
-    "name": "Mario Kart",
-    "price": 25.0,
-    "description": "A FPS game.",
-    "img": "/assets/img/kart.png",
-    "platform": "N64"
-  },
-  {
-    "id": 6,
-    "name": "Mario Kart 2",
-    "price": 25.0,
-    "description": "A FPS game.",
-    "img": "/assets/img/kart.png",
-    "platform": "N64"
   }
 ];
 

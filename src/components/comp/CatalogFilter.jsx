@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import CatalogType from '../../types/CatalogType';
 import CatalogUtils from '../../utils/CatalogUtils';
 

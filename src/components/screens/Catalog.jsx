@@ -5,7 +5,8 @@ import ProductCard from '../comp/ProductCard';
 import CatalogUtils from '../../utils/CatalogUtils';
 
 export default function Catalog({products}){
-    const [catalog, setCatalog] = useState(products);
+
+    const catalog = products;
     const [currentPlatform, setCurrentPlatform] = useState(CatalogUtils.DEFAULT_PLATFORM);
     const [currentPriceMin, setCurrentPriceMin] = useState(0);
     const [currentPriceMax, setCurrentPriceMax] = useState(100);
@@ -46,7 +47,7 @@ export default function Catalog({products}){
 
             return filtered;
         }, 
-        [catalog, currentPlatform, currentName, currentPriceMax, currentPriceMin]
+        [currentPlatform, currentName, currentPriceMax, currentPriceMin]
     ); 
 
     const numProduits = useMemo( 
@@ -54,7 +55,7 @@ export default function Catalog({products}){
             return filteredProducts.length;
         }, 
         [filteredProducts]
-    )
+    );
 
 
     return (

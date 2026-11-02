@@ -1,6 +1,7 @@
-TP n°5
+TP n°6
 
-- Etendre le CatalogFilter.jsx de sorte à rajouter les filtres suivants: 
-    - filtrer par prix min
-    - filtrer par prix max
-    - filtrer par prix name
+- Au sein du composant App.jsx téléchargez, à l'aide de useEffect, un fichier que vous créerez
+pour l'occasion, nommé "promo.json" (mettez-le au même endroit le catalog.json)
+
+- Une fois les informations obtenues, créez un composant Promo.jsx, passez lui les infos
+du produit en question, et affichez-les à l'écran.
