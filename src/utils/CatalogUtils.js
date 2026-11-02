@@ -1,4 +1,7 @@
 export default class CatalogUtils{
+
+    static DEFAULT_PLATFORM = "All";
+
     static getUniquePlatformsFromProducts(products){
         // ici on retourne un tableau de plateformes 
         // crée à partir de la liste des produits
@@ -9,6 +12,8 @@ export default class CatalogUtils{
         ); 
         // Set permet de trier les doublons
         // Array.from permet de créer un tableau à partir du Set
-        return Array.from( new Set( platforms ) );
+        const results = Array.from( new Set( platforms ) );
+        results.unshift(this.DEFAULT_PLATFORM);
+        return results;
     }
 }

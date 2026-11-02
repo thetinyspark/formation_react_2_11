@@ -1,12 +1,6 @@
-TP n°4
+TP n°5
 
-- Créez un composant nommé Catalog.jsx et envoyez lui dans ses props, 
-la liste des produits à afficher
-
-- Même chose pour un composant nommé CatalogFilter.jsx qui va 
-afficher la liste des plateformes, envoyez lui aussi la liste 
-des produits à partir de laquelle il construira la liste unique 
-des plateformes
-
-
-- Puis, intégrez ces deux composants à votre App.jsx
+- Etendre le CatalogFilter.jsx de sorte à rajouter les filtres suivants: 
+    - filtrer par prix min
+    - filtrer par prix max
+    - filtrer par prix name
