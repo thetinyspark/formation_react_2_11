@@ -1,4 +1,5 @@
 import PageHeader from './components/PageHeader';
+import ProductCard from './components/ProductCard';
 import CATALOG_MOCK from './data/CATALOG_MOCK';
 
 function getUniquePlatforms(products){
@@ -16,48 +17,35 @@ function getUniquePlatforms(products){
 
 export default function App() {
 
-  const info = {
-    toto: "toto",
-    titi: "titi",
-  };
-
   return (
     // Le Fragment ajoute le footer sans créer d'élément DOM englobant superflu.
     <>
       <main className="app-shell">
-        <PageHeader title="MICROMANIA" info={info}/>
-      </main>
+        <PageHeader/>
+            <div>
+              <select>
+              {
+                getUniquePlatforms(CATALOG_MOCK).map( 
+                  (platform, index)=>{
+                    return (
+                      <option value={platform} key={index}>{platform}</option>
+                    )
+                  }
+                )
+              }
+              </select>
+            </div>
 
-      <div>
-        <select>
-        {
-          getUniquePlatforms(CATALOG_MOCK).map( 
-            (platform, index)=>{
-              return (
-                <option value={platform} key={index}>{platform}</option>
+            {
+              CATALOG_MOCK.map(
+                (product)=>{
+                  return ( 
+                    <ProductCard product={product} key={product.id} />
+                  )
+                }
               )
             }
-          )
-        }
-        </select>
-      </div>
-
-      {
-        CATALOG_MOCK.map(
-          (product)=>{
-            return ( 
-              <div className="product" key={product.id}>
-                <h2>{product.name}</h2>
-                <p>ID: {product.id}</p>
-                <p>{product.description}</p>
-                <p>{product.platform}</p>
-                <p>{product.price}€</p>
-                <img src={product.img} />
-              </div>
-            )
-          }
-        )
-      }
+      </main>
       <footer className="course-note">Footer</footer>
     </>
   );
