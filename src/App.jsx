@@ -1,5 +1,5 @@
 import PageHeader from './components/PageHeader';
-import IDCard from './components/IDCard';
+import CATALOG_MOCK from './data/CATALOG_MOCK';
 
 export default function App() {
   return (
@@ -7,8 +7,18 @@ export default function App() {
     <>
       <main className="app-shell">
         <PageHeader />
-        <IDCard></IDCard>
       </main>
+      {
+        CATALOG_MOCK.map(
+          (product)=>{
+            return ( 
+              <div className="product" key={product.id}>
+                <h2>{product.name}</h2>
+              </div>
+            )
+          }
+        )
+      }
       <footer className="course-note">Footer</footer>
     </>
   );
