@@ -1,6 +1,6 @@
-TP n°2
+TP n°3
 
-- Faites en sorte d'afficher l'intégralité des informations des produits. 
-- Créez une fonctionnalité permettant d'extraire la liste unique, des plateformes
-de tous les jeux et affichez là dans une balise <select>
-- Pour être sur d'avoir une liste unique, dupliquez un des jeux et donenz-lui un nom légèrement différent.
+- Créez un composant ProductCard.jsx et envoyez-lui à travers les props
+les infos du produit à afficher. (+ utilisez les prop types)
+
+- Puis affichez autant de composant ProductCard qu'il y a des produits dans le catalogue

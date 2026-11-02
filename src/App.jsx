@@ -15,20 +15,26 @@ function getUniquePlatforms(products){
 }
 
 export default function App() {
+
+  const info = {
+    toto: "toto",
+    titi: "titi",
+  };
+
   return (
     // Le Fragment ajoute le footer sans créer d'élément DOM englobant superflu.
     <>
       <main className="app-shell">
-        <PageHeader />
+        <PageHeader title="MICROMANIA" info={info}/>
       </main>
 
       <div>
         <select>
         {
           getUniquePlatforms(CATALOG_MOCK).map( 
-            (platform)=>{
+            (platform, index)=>{
               return (
-                <option value={platform}>{platform}</option>
+                <option value={platform} key={index}>{platform}</option>
               )
             }
           )
