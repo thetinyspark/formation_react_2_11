@@ -1,0 +1,1024 @@
+
+	<html>
+		<head>
+			<style type="text/css">
+				code,
+kbd,
+pre,
+samp {
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	box-sizing: border-box;
+	background-color: #333333;
+	color: #FAFAFA;
+	line-height: 1.2rem;
+	margin: 0;
+	display: block; 
+	padding: 5px;
+	border: none;
+}
+
+p{
+	text-align: justify;
+}
+
+
+img{
+	margin-top: 5px;
+	margin: auto;
+}
+
+h1 {
+    font-size: 4em;
+	margin: 0.67em 0;
+	color: rgb(20, 90, 122);
+	padding: 5px;
+	text-align: center;
+	height: 100%;
+	margin-top: 50%;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+				/*!
+ * Agate by Taufik Nurrohman <https://github.com/tovic>
+ * ----------------------------------------------------
+ *
+ * #ade5fc
+ * #a2fca2
+ * #c6b4f0
+ * #d36363
+ * #fcc28c
+ * #fc9b9b
+ * #ffa
+ * #fff
+ * #333
+ * #62c8f3
+ * #888
+ *
+ */
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #333;
+  color: white;
+}
+
+.hljs-name,
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-code,
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-tag {
+  color: #62c8f3;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #ade5fc;
+}
+
+.hljs-string,
+.hljs-bullet {
+  color: #a2fca2;
+}
+
+.hljs-type,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-quote,
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #ffa;
+}
+
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet {
+  color: #d36363;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal {
+  color: #fcc28c;
+}
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-code {
+  color: #888;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #c6b4f0;
+}
+
+.hljs-meta {
+  color: #fc9b9b;
+}
+
+.hljs-deletion {
+  background-color: #fc9b9b;
+  color: #333;
+}
+
+.hljs-addition {
+  background-color: #a2fca2;
+  color: #333;
+}
+
+.hljs a {
+  color: inherit;
+}
+
+.hljs a:focus,
+.hljs a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+			</style>
+		</head>
+		<body>
+		<h1 id="introduction">Introduction</h1>
+
+<h2 id="cestquoitypescript">C'est quoi Typescript ?</h2>
+<p><img src="./assets/ts.png" alt="./assets/ts.png" /></p>
+<p>TypeScript est un <strong>langage de programmation libre et open source</strong> développé par Microsoft qui a pour but <strong>d'améliorer et de sécuriser</strong> la production de code JavaScript. C'est un <strong>sur-ensemble</strong> de JavaScript (c'est-à-dire que tout code JavaScript correct peut être utilisé avec TypeScript). Le code TypeScript est transcompilé en JavaScript, pouvant ainsi être interprété par n'importe quel navigateur web ou moteur JavaScript.</p>
+<p>TypeScript permet un typage statique optionnel des variables et des fonctions, la création de classes et d'interfaces, l'import de modules, tout en conservant l'approche non-contraignante de JavaScript. Il supporte la spécification ECMAScript 6.</p>
+
+<h2 id="installertypescript">Installer Typescript</h2>
+<p>Typescript n'est pas un langage directement disponible sur le système, il n'est pas non plus interprété directement au sein du navigateur, comme Javascript. Pour l'utiliser, nous avons besoin de l'installer sur la machine.</p>
+<p>Il existe deux façons d'installer Typescript: </p>
+<ul>
+<li>En installant <strong>Visual Studio</strong> et le plugin Typescript</li>
+<li>En passant par le gestionnaire de paquets de node.js, <strong>npm</strong></li>
+</ul>
+<pre><code class="hljs bash language-bash"><span class="hljs-comment">#permet d'installer typescript au sein du dossier courant</span>
+npm install typescript
+
+<span class="hljs-comment">#ou </span>
+
+
+<span class="hljs-comment">#permet d'installer typescript de façon globale sur la machine</span>
+npm install -g typescript
+
+
+<span class="hljs-comment">#puis taper la commande suivante pour obtenir le numéro de version </span>
+tsc -v
+</code></pre>
+
+<h2 id="unhelloworldentypescript">Un Hello World en Typescript</h2>
+<p>Voici un programme de base écrit en typescript, un 'hello world'. La syntaxe ressemble énormément à Javascript mais vous pouvez noter que l'on utilise un type de données précis pour notre variable, le type 'string' qui correspond à une chaîne de caractères. </p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// on déclare une variable str contenant le chaîne "hello world"</span>
+<span class="hljs-keyword">let</span> str:<span class="hljs-built_in">string</span> = <span class="hljs-string">"hello world"</span>;
+
+<span class="hljs-comment">// puis on l'affiche</span>
+<span class="hljs-built_in">console</span>.log(str);
+</code></pre>
+<p>Notez bien que l'on ne peut se servir directement de ce fichier source, en effet, aucun navigateur ou programme connu n'interprète le typescript de façon 'native'. Il faut donc passer par une étape supplémentaire nommée <strong>transpiling</strong> en anglais. Ce terme peut être traduit par <strong>transcompilation</strong>.</p>
+
+<h2 id="transpiling">Transpiling</h2>
+<p>Le Typescript n'est pas (encore) un langage destiné à être directement interprété par le navigateur. Son but est d'offrir une <strong>extension</strong> à Javascript, un <strong>sur-ensemble de fonctionnalités</strong></p>
+<p>Il faut donc passer par une étape supplémentaire nommée <strong>transpiling</strong> en anglais. Ce terme peut être traduit par <strong>transcompilation</strong>.</p>
+<pre><code class="hljs bash language-bash"><span class="hljs-comment">#ici on "transcompile" le fichier "monfichier.ts" et l'on </span>
+<span class="hljs-comment">#obtient ainsi un fichier équivalent, traduit en javascript</span>
+
+tsc monfichier.ts
+</code></pre>
+
+<h2 id="lefichiertsconfigjson">Le fichier tsconfig.json</h2>
+<p>Le fichier tsconfig.json est le cœur de la configuration TypeScript. Il permet de définir comment le compilateur tsc doit transformer le code TypeScript en JavaScript.</p>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"ES2020"</span>,
+    <span class="hljs-attr">"module"</span>: <span class="hljs-string">"commonjs"</span>,
+    <span class="hljs-attr">"strict"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"outDir"</span>: <span class="hljs-string">"./dist"</span>,
+    <span class="hljs-attr">"rootDir"</span>: <span class="hljs-string">"./src"</span>
+  }
+}
+</code></pre>
+
+<h2 id="lesoptionsducompilateur">Les options du compilateur</h2>
+<p>Dans compilerOptions, on trouve des paramètres importants :</p>
+<ul>
+<li><strong>target</strong>: Version JS de sortie (ES5, ES6, ES2020, etc.)</li>
+<li><strong>module</strong>: Système de modules (commonjs, esnext, etc.)</li>
+<li><strong>strict</strong>: Active toutes les vérifications strictes (true recommandé)</li>
+<li><strong>outDir</strong>: Dossier de sortie des fichiers compilés</li>
+<li><strong>rootDir</strong>: Dossier racine des sources TypeScript</li>
+<li><strong>sourceMap</strong>: Génère un .map pour faciliter le débogage dans le navigateur</li>
+<li><strong>noImplicitAny</strong>: Interdit les variables sans type explicite</li>
+<li><strong>esModuleInterop</strong>: Améliore la compatibilité avec les modules CommonJS</li>
+<li><strong>skipLibCheck</strong>: Ignore les erreurs dans les fichiers .d.ts</li>
+<li><strong>include</strong>: Fichiers ou dossiers à compiler</li>
+<li><strong>exclude</strong>: Fichiers ou dossiers ignorés</li>
+<li><strong>files (opt)</strong>: Si défini, alors seuls les fichiers mentionnés sont compilés</li>
+</ul>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"ES2020"</span>,
+    <span class="hljs-attr">"module"</span>: <span class="hljs-string">"ESNext"</span>,
+    <span class="hljs-attr">"strict"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"outDir"</span>: <span class="hljs-string">"./dist"</span>,
+    <span class="hljs-attr">"rootDir"</span>: <span class="hljs-string">"./src"</span>,
+    <span class="hljs-attr">"sourceMap"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"esModuleInterop"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"include"</span>: [<span class="hljs-string">"src/**/*.ts"</span>],
+    <span class="hljs-attr">"exclude"</span>: [<span class="hljs-string">"node_modules"</span>, <span class="hljs-string">"dist"</span>]
+  }
+}
+</code></pre>
+
+<h2 id="crerunbuild">Créer un build</h2>
+<p>Une fois tsconfig.json configuré :</p>
+<pre><code class="hljs bash language-bash"><span class="hljs-comment"># Compiler le projet</span>
+npx tsc
+
+<span class="hljs-comment"># Compiler en watch mode</span>
+npx tsc --watch
+</code></pre>
+<p>Et pour se simplifier la vie, on peut ajouter les commandes suivantes au fichier package.json :</p>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"scripts"</span>: {
+    <span class="hljs-attr">"build"</span>: <span class="hljs-string">"tsc"</span>,
+    <span class="hljs-attr">"build:watch"</span>: <span class="hljs-string">"tsc --watch"</span>
+  }
+}
+</code></pre>
+
+<h2 id="stratgiesdeprojetsconfigurationmultiples">Stratégies de projets à configuration multiples</h2>
+<p>Pour les gros projets ou les monorepos, il est fréquent de découper en plusieurs tsconfig. On regroupe ainsi toutes les options communes dans un fichier <strong>tsconfig.base.json</strong> et  les options spécifiques à chaque sous projet sont contenues dans des fichiers spécifiques à chaque sous projet:</p>
+<pre><code class="hljs txt language-txt">/monorepo
+ ├── tsconfig<span class="hljs-selector-class">.base</span><span class="hljs-selector-class">.json</span>
+ ├── packages/
+ │    ├── frontend/tsconfig<span class="hljs-selector-class">.json</span>
+ │    └── backend/tsconfig<span class="hljs-selector-class">.json</span>
+</code></pre>
+<p>tsconfig.base.json</p>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"ES2020"</span>,
+    <span class="hljs-attr">"module"</span>: <span class="hljs-string">"ESNext"</span>,
+    <span class="hljs-attr">"strict"</span>: <span class="hljs-literal">true</span>
+  }
+}
+</code></pre>
+<p>packages/frontend/tsconfig.base.json</p>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"extends"</span>: <span class="hljs-string">"../../tsconfig.base.json"</span>,
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"outDir"</span>: <span class="hljs-string">"./dist"</span>
+  },
+  <span class="hljs-attr">"include"</span>: [<span class="hljs-string">"src"</span>]
+}
+</code></pre>
+
+<h2 id="crationdunworkflowpersonnalis">Création d'un workflow personnalisé</h2>
+<p>On peut créer un flux de travail complet pour TypeScript avec compilation, nettoyage et exécution.</p>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"scripts"</span>: {
+    <span class="hljs-attr">"clean"</span>: <span class="hljs-string">"rm -rf dist"</span>,
+    <span class="hljs-attr">"build"</span>: <span class="hljs-string">"npm run clean &amp;&amp; tsc"</span>,
+    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"node dist/index.js"</span>,
+    <span class="hljs-attr">"dev"</span>: <span class="hljs-string">"tsc --watch &amp; nodemon dist/index.js"</span>
+  }
+}
+</code></pre>
+<ul>
+<li><strong>clean :</strong> supprime les fichiers compilés</li>
+<li><strong>build :</strong> nettoie puis compile</li>
+<li><strong>start :</strong> lance le programme compilé</li>
+<li><strong>dev :</strong> compile en continu et redémarre automatiquement</li>
+</ul>
+
+
+<h1 id="typescriptbasicsbasictypes">TypeScript Basics &amp; Basic Types</h1>
+
+<h2 id="lestypesdedonnesdebasesentypescript">Les types de données de bases en Typescript</h2>
+<ul>
+<li><strong>Boolean</strong>: Une simple valeur pouvant être vraie (true) ou fausse</li>
+<li><strong>Number</strong>: Un nombre flottant (ex: 1.5)</li>
+<li><strong>String</strong>: Une chaîne de caractères (ex: "Hello World")</li>
+<li><strong>Any</strong>: Un type désignant "n'importe quel type de données", équivalent du type object en javascript.</li>
+<li><strong>Void</strong>: Un type désignant du vide, rien, aucune valeur, souvent utilisé pour préciser qu'une fonction/méthode ne retourne pas de valeur (on attend du vide, donc rien)</li>
+<li><strong>Enum</strong>: Un type de données permettant de créer son propre type de données customisé avec un choix prédéfini dans les valeurs (ex: enum Color {Red, Green, Blue}).</li>
+<li><strong>Array</strong>: Un tableau pouvant contenir toutes sortes d'éléments (ex: [10,true,"google"] ). On peut également définir le type de données d'un tableau ( ex: let tab:Array<number>; )</li>
+<li><strong>Never</strong>: Un type qui ne retourne jamais rien (boucle infinie ou erreur)</li>
+<li><strong>Null and Undefined</strong>: Equivalent des types null et undefined Javascript.</li>
+</ul>
+<p>Il en existe plein d'autres que vous pourrez retrouver sur la documentation en ligne du langage Typescript à www.typescriptlang.org</p>
+
+<h2 id="templatesstrings">Templates Strings</h2>
+<p>Les "templates strings" permettent d'insérer plus facilement des valeurs de variables au sein d'une chaîne de caractère, ces dernières peuvent également être définies sur plusieurs lignes.</p>
+<p>Il s'agit d'une nouveauté de la norme ES6, mais comme Typescript est un sur-ensemble de Javascript, elles sont supportées.</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">let</span> jedi = {<span class="hljs-attr">surname</span>:<span class="hljs-string">"Obiwan"</span>, <span class="hljs-attr">name</span>:<span class="hljs-string">"Kenobi"</span>}; 
+<span class="hljs-keyword">let</span> msg = <span class="hljs-string">`<span class="hljs-subst">${jedi.name}</span> <span class="hljs-subst">${jedi.surname}</span> is the Jedi Master`</span>;
+<span class="hljs-built_in">console</span>.log(msg);
+</code></pre>
+
+<h2 id="lesvariables">Les variables</h2>
+<p>En Typescript, on n'emploie plus le mot clé <strong>var</strong> pour déclarer une variable mais le mot clé <strong>let</strong> et le mot clé <strong>const</strong>.</p>
+<p>Le mot clé <strong>const</strong> est utilisé, comme son nom l'indique, pour déclarer une valeur <strong>constante</strong>, çàd une valeur ne pouvant être modifiée, si vous essayez de modifier une constante, une erreur est levée.</p>
+<p>Le mot clé <strong>let</strong> est quand à lui utilisé pour déclarer une valeur variable, çàd une valeur capable de changer au cours de la durée de vie de votre programme.</p>
+<p>Contrairement à Javascript, qui n'est pas typé, le Typescript l'est lui, comme son nom l'indique. Il est donc utile de préciser le type de données que l'on souhaite stocker au sein de la variable (ou de la constante) à l'aide de la syntaxe suivante:</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// constante, ne peut être modifiée</span>
+<span class="hljs-keyword">const</span> LIGHT_SPEED:<span class="hljs-built_in">string</span> = <span class="hljs-string">"299 792 458 m / s"</span>;
+<span class="hljs-comment">// variable, peut être modifiée</span>
+<span class="hljs-keyword">let</span> msg:<span class="hljs-built_in">string</span> = <span class="hljs-string">"Hello World"</span>; 
+</code></pre>
+
+<h2 id="lesfonctions">Les fonctions</h2>
+<p>En Typescript comme en Javascript, les fonctions sont incontournables. Il s'agit de blocs d'instructions répétables que l'on peut appeler ( on dit invoquer ) autant de fois que nécessaire.</p>
+<p>Les fonctions Typescript, contrairement aux fonctions Javascript, précisent le type de données qu'elles renvoient, et si elles ne renvoient rien, alors le type de retour est <strong>void</strong> (du vide)</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// les paramètres sont typés, et le type de la donnée </span>
+<span class="hljs-comment">// retournée également à l'aide de la syntaxe suivante:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"> a:<span class="hljs-built_in">number</span>, b:<span class="hljs-built_in">number</span> </span>):<span class="hljs-title">number</span></span>{
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-comment">// quand une fonction ne retourne aucune donnée</span>
+<span class="hljs-comment">// alors on le précise en utilsant le type "void"</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">notif</span>(<span class="hljs-params"> msg:<span class="hljs-built_in">string</span> </span>):<span class="hljs-title">void</span></span>{
+    alert(msg);
+}
+
+<span class="hljs-comment">// les fonctions anonymes sont également utilisables, comme en JS</span>
+<span class="hljs-keyword">let</span> anonymous:<span class="hljs-built_in">Function</span> = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>):<span class="hljs-title">void</span></span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I am an anonymous function"</span>);
+};
+
+<span class="hljs-comment">// on peut invoquer une fonction anonyme comme en JS</span>
+anonymous();
+</code></pre>
+
+<h2 id="lesfonctionsflches">Les fonctions fléchées</h2>
+<p>En Typescript comme en Javascript ES6, les fonctions fléchées sont supportées, bien entendu le typage des paramètres et de la donnée de retour est à ajouter au sein de la version Typescript.  Il est également possible de spécifier des valeurs par défaut aux paramètres. Les fonctions fléchées ont également l'avantage de préserver le contexte dans lequel elles sont déclarées.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// fonction fléchée anonyme avec valeur de parmètre par défaut</span>
+<span class="hljs-keyword">let</span> hello = (param_user: <span class="hljs-built_in">string</span> = <span class="hljs-string">"user"</span>): <span class="hljs-function"><span class="hljs-params">void</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello"</span>, param_user);
+};
+
+hello(); <span class="hljs-comment">// invoquons cette fonction</span>
+
+<span class="hljs-comment">// les fonctions fléchées anonymes préservent le contexte</span>
+<span class="hljs-keyword">class</span> Gandalf {
+    name: <span class="hljs-built_in">string</span> = <span class="hljs-string">"Gandalf"</span>;
+    introduce = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello my name is"</span>, <span class="hljs-keyword">this</span>.name);
+    }
+}
+
+<span class="hljs-comment">// testons notre code</span>
+<span class="hljs-keyword">new</span> Gandalf().introduce();
+</code></pre>
+
+<h2 id="lesboucles">Les boucles</h2>
+<p>En Typescript, les boucles fonctionnent comme en Javascript: </p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">let</span> i:<span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;
+
+<span class="hljs-comment">// une boucle for classique en Typescript</span>
+<span class="hljs-keyword">for</span>( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i ++){
+    <span class="hljs-built_in">console</span>.log(i);
+}
+
+<span class="hljs-comment">// une boucle while classique en Typescript</span>
+i = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">while</span>( --i &gt; <span class="hljs-number">-1</span> ){
+    <span class="hljs-built_in">console</span>.log(i);
+}
+
+<span class="hljs-comment">// une boucle do while classique en Typescript</span>
+i = <span class="hljs-number">-1</span>;
+<span class="hljs-keyword">do</span>{
+    <span class="hljs-keyword">if</span>( i == <span class="hljs-number">-1</span> ){
+        i = <span class="hljs-number">10</span>;
+    }
+}<span class="hljs-keyword">while</span>( --i &gt; <span class="hljs-number">-1</span>)
+</code></pre>
+
+<h2 id="lestableaux">Les tableaux</h2>
+<p>TypeScript, comme JavaScript, permet de travailler avec des <strong>tableaux</strong> de valeurs. A la différence qu'en Typescipt, les tableaux (si on le souhaite) peuvent être <strong>typés</strong> ,ce qui signifie qu'ils ne peuvent contenir <strong>qu'un seul type de données</strong>. La déclaration de type pour les tableaux peut s'écrire de deux façons :</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// premièe façon de déclarer un tableau typé</span>
+<span class="hljs-keyword">let</span> notes:<span class="hljs-built_in">number</span>[] = [
+    <span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">12</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">20</span>,<span class="hljs-number">13</span>,<span class="hljs-number">15</span>
+];
+
+<span class="hljs-comment">// seconde façon de déclarer un tableau typé</span>
+<span class="hljs-keyword">let</span> notes2:<span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [
+    <span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">12</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">20</span>,<span class="hljs-number">13</span>,<span class="hljs-number">15</span>
+];
+</code></pre>
+
+<h2 id="lesenums">Les enums</h2>
+<p>TypeScript nous permet de créer et d'utiliser des <strong>enums</strong>. Les enums permettent au développeur de créer un lot de <strong>constantes</strong> et de les regrouper de façon à former un nouveau <strong>type de données</strong>.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// créons un type de données "Direction"</span>
+<span class="hljs-comment">// qui peut prendre 4 valeurs différentes</span>
+<span class="hljs-keyword">enum</span> Direction { Up = <span class="hljs-number">1</span>, Down = <span class="hljs-number">2</span>, Left = <span class="hljs-number">3</span>, Right = <span class="hljs-number">4</span> };
+
+<span class="hljs-keyword">let</span> haut: Direction = Direction.Up;
+<span class="hljs-keyword">let</span> bas: Direction = Direction.Down;
+<span class="hljs-keyword">let</span> gauche: Direction = Direction.Left;
+<span class="hljs-keyword">let</span> droite: Direction = Direction.Right;
+
+<span class="hljs-built_in">console</span>.log(haut, bas, gauche, droite);
+</code></pre>
+
+<h2 id="lestuples">Les Tuples</h2>
+<p>TypeScript nous permet de créer et d'utiliser des <strong>tuples</strong>. Les tuples permettent au développeur de créer des tableaux ordonnés avec des types prédéfinis.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// tableau fixe et ordonné</span>
+<span class="hljs-keyword">let</span> utilisateur: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];
+utilisateur = [<span class="hljs-string">"Alice"</span>, <span class="hljs-number">30</span>]; <span class="hljs-comment">// ✅</span>
+utilisateur = [<span class="hljs-number">30</span>, <span class="hljs-string">"Alice"</span>]; <span class="hljs-comment">// ❌ Ordre incorrect</span>
+</code></pre>
+
+
+<h1 id="nextgenerationjavascript">Next-generation JavaScript</h1>
+
+<h2 id="impactsurlasyntaxe">Impact sur la syntaxe</h2>
+<p>TypeScript est un sur-ensemble de JavaScript :</p>
+<ul>
+<li>Tout code JavaScript valide est aussi du TypeScript.</li>
+<li>On ajoute des annotations de types, des interfaces, des enums, etc.</li>
+<li>Ces ajouts n’existent plus dans le code JavaScript compilé.</li>
+</ul>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// TypeScript</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addition</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span> </span>{
+  <span class="hljs-keyword">return</span> a + b;
+}
+
+
+<span class="hljs-comment">// JavaScript généré</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addition</span>(<span class="hljs-params">a, b</span>) </span>{
+  <span class="hljs-keyword">return</span> a + b;
+}
+</code></pre>
+<p><strong>Conclusion :</strong> L’impact est surtout au niveau du développement et de la compilation, pas à l’exécution.</p>
+
+<h2 id="automatiserladocumentation">Automatiser la documentation</h2>
+<p>Le typage explicite permet de générer automatiquement une documentation à partir du code.</p>
+<p>Voici un exemple avec <strong>typedoc</strong></p>
+<pre><code class="hljs bash language-bash">npm install typedoc --save-dev
+npx typedoc --entryPoints src/index.ts --out docs
+</code></pre>
+<pre><code class="hljs bash language-bash">/**
+ * Additionne deux nombres.
+ * @param a Premier nombre
+ * @param b Deuxième nombre
+ */
+<span class="hljs-keyword">function</span> addition(a: number, b: number): number {
+  <span class="hljs-built_in">return</span> a + b;
+}
+</code></pre>
+
+<h2 id="utilisertypescriptavecducodejavascriptstandard">Utiliser TypeScript avec du code JavaScript standard</h2>
+<p>On peut intégrer TypeScript dans un projet existant JavaScript :</p>
+<ol>
+<li><p>Renommer petit à petit les fichiers .js en .ts ou .tsx</p></li>
+<li><p>Activer allowJs dans tsconfig.json</p></li>
+</ol>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"allowJs"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"checkJs"</span>: <span class="hljs-literal">true</span>
+  }
+}
+</code></pre>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-comment">// JavaScript avec vérification TypeScript</span>
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@param <span class="hljs-type">{number}</span> <span class="hljs-variable">a</span></span>
+ * <span class="hljs-doctag">@param <span class="hljs-type">{number}</span> <span class="hljs-variable">b</span></span>
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addition</span>(<span class="hljs-params">a, b</span>) </span>{
+  <span class="hljs-keyword">return</span> a + b;
+}
+</code></pre>
+
+<h2 id="incluregnrerdesfichiersdedfinitionpourlacompatibilit">Inclure/générer des fichiers de définition pour la compatibilité</h2>
+<p>Les fichiers .d.ts contiennent uniquement des définitions de types, sans implémentation.</p>
+<p>Inclure : pour utiliser une lib JS dans TS</p>
+<pre><code class="hljs bash language-bash">npm install @types/express
+</code></pre>
+<p>Générer pour votre propre lib :</p>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"declaration"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"outDir"</span>: <span class="hljs-string">"./dist"</span>
+  }
+}
+</code></pre>
+
+<h2 id="bnficedesgetterssettersimplicites">Bénéfice des getters/setters implicites</h2>
+<p>En TypeScript, on peut créer des accesseurs (get / set) qui :</p>
+<ol>
+<li><p>Permettent de contrôler la lecture/écriture d’une propriété</p></li>
+<li><p>Conservent la même syntaxe que les attributs standards</p></li>
+</ol>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">class</span> Utilisateur {
+  <span class="hljs-keyword">private</span> _nom: <span class="hljs-built_in">string</span>;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">nom: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-keyword">this</span>._nom = nom;
+  }
+
+  <span class="hljs-keyword">get</span> nom(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._nom.toUpperCase();
+  }
+
+  <span class="hljs-keyword">set</span> nom(val: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">if</span> (val.length &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Nom trop court"</span>);
+    <span class="hljs-keyword">this</span>._nom = val;
+  }
+}
+
+<span class="hljs-keyword">const</span> u = <span class="hljs-keyword">new</span> Utilisateur(<span class="hljs-string">"Alice"</span>);
+<span class="hljs-built_in">console</span>.log(u.nom); <span class="hljs-comment">// ALICE</span>
+u.nom = <span class="hljs-string">"Bob"</span>;      <span class="hljs-comment">// passe par le setter</span>
+</code></pre>
+
+<h2 id="modules">Modules</h2>
+<p>A partir de ECMAScript 2015 (ES6), JavaScript introduit le concept de modules, et bien entendu, ce concept est supporté en Typescript</p>
+<p>Les modules sont éxécutés au sein de leur propre portée, et non pas au sein de la portée globale. Cela signifie que les variables, fonctions, classes, etc… Déclarées au sein d'un module ne sont pas visibles en dehors du module à moins qu'elles ne soient explicitement exportées à l'aide du mot-clé <strong>export</strong>. De fait, pour utiliser un élément exporté, au sein d'un module différent, il faut utiliser le mot-clé <strong>import</strong>.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toto</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"toto est beau"</span>);
+}
+</code></pre>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">import</span> {toto} <span class="hljs-keyword">from</span> <span class="hljs-string">'./ts_modules_1'</span>;
+
+toto();
+</code></pre>
+
+<h2 id="namespaces">Namespaces</h2>
+<p>Utilisés pour regrouper du code sans système de modules</p>
+<p>Moins courant aujourd’hui, mais utile pour code global ou libs anciennes</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">namespace</span> Geometrie {
+  <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">aireCercle</span>(<span class="hljs-params">rayon: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.PI * rayon * rayon;
+  }
+}
+
+<span class="hljs-built_in">console</span>.log(Geometrie.aireCercle(<span class="hljs-number">10</span>));
+</code></pre>
+
+
+<h1 id="typescriptpoo">Typescript &amp; POO</h1>
+
+<h2 id="programmationorienteobjetpoo">Programmation orientée objet (POO)</h2>
+<p>La programmation orientée objet est un style de programmation nous permettant de représenter des concepts informatiques sous forme d'objets. Pour conceptualiser un objet, nous avons besoin de plusieurs outils directement intégrés au langage. Il existe également plusieurs façons de "coder objet", Javascript est un langage <strong>orienté objet par prototypage</strong>, mais <strong>Typescript</strong> lui émule le comportement d'un <strong>langage orienté objet par classe</strong>. Il est important de retenir qu'un objet possède plusieurs caractéristiques: </p>
+<ul>
+<li><p>Un objet possède des <strong>propriétés</strong>, çàd des variables qui lui appartiennent en propre, la portée de ces propriétés peut être, publique, protégée ou privée.</p></li>
+<li><p>Un objet possède également des <strong>méthodes</strong>, çàd des fonctionnalités ( fonctions ) qui lui appartiennent en propre, la portée de ces méthodes peut être, publique, protégée ou privée.</p></li>
+<li><p>Dans un langage orienté objet par classe, un objet peut <strong>hériter</strong> d'un autre objet.</p></li>
+<li><p>Un objet peut prendre <strong>plusieurs formes</strong> et rédéfinir ses propriétés héritées</p></li>
+</ul>
+<p>Et il ne s'agit ici que des caractéristiques minimum, çàd celles qui définissent la base de la base d'un langage orienté objet, on parle des principes** d'encapsulation, d'héritage et de polymorphisme**. </p>
+
+<h2 id="lesclasses">Les classes</h2>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">class</span> Hero{
+    <span class="hljs-comment">// une propriété peut être publique, protégée ou privée</span>
+    <span class="hljs-keyword">public</span> name:<span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> power:<span class="hljs-built_in">string</span>;
+
+    <span class="hljs-comment">// la fonction constructrice est invoquée automatiquement </span>
+    <span class="hljs-comment">// à la création d'un nouvel objet </span>
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"> 
+        param_name:<span class="hljs-built_in">string</span>, 
+        param_power:<span class="hljs-built_in">string</span>
+    </span>){
+        <span class="hljs-comment">// on attribue à nos propriétés les valeurs passées </span>
+        <span class="hljs-comment">// en paramètre</span>
+        <span class="hljs-keyword">this</span>.name = param_name;
+        <span class="hljs-keyword">this</span>.power = param_power;
+    }
+
+    <span class="hljs-comment">// une méthode peut être publique, protégée ou privée</span>
+    <span class="hljs-keyword">public</span> sayMyName():<span class="hljs-built_in">void</span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name);
+    }
+
+    <span class="hljs-keyword">public</span> sayMyPower():<span class="hljs-built_in">void</span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.power);
+    }
+}
+
+<span class="hljs-keyword">let</span> myHero:Hero = <span class="hljs-keyword">new</span> Hero(<span class="hljs-string">"Batman"</span>, <span class="hljs-string">"Being rich"</span>);
+myHero.sayMyName();
+</code></pre>
+
+<h2 id="lesingleton">Le Singleton</h2>
+<p>Le design pattern Singleton permet de s'assurer qu'un object n'est instancié qu'une seule fois à travers toute l'application. Il procure également un accès unifié à cette instance (ici via la méthode <strong>getInstance</strong>.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">class</span> MySingleton{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> _instance:MySingleton;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> getInstance():MySingleton{
+        <span class="hljs-keyword">if</span>( !MySingleton._instance ){
+            MySingleton._instance = <span class="hljs-keyword">new</span> MySingleton();
+        }
+        <span class="hljs-keyword">return</span> MySingleton._instance;
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>){}
+}
+
+<span class="hljs-comment">// pour obtenir l'instance: </span>
+<span class="hljs-built_in">console</span>.log( MySingleton.getInstance() == MySingleton.getInstance() );
+</code></pre>
+
+<h2 id="lepatternfactory">Le pattern Factory</h2>
+<p>Centralise la création d’objets, utile quand la logique d’instanciation est complexe.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">interface</span> Vehicule {
+  drive(): <span class="hljs-built_in">void</span>;
+}
+
+<span class="hljs-keyword">class</span> Voiture <span class="hljs-keyword">implements</span> Vehicule {
+  drive() { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"La voiture roule"</span>); }
+}
+
+<span class="hljs-keyword">class</span> Moto <span class="hljs-keyword">implements</span> Vehicule {
+  drive() { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"La moto roule"</span>); }
+}
+
+<span class="hljs-keyword">class</span> VehicleFactory {
+  <span class="hljs-keyword">static</span> create(<span class="hljs-keyword">type</span>: <span class="hljs-string">"voiture"</span> | <span class="hljs-string">"moto"</span>): Vehicule {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">"voiture"</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Voiture();
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">"moto"</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Moto();
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Type de véhicule inconnu"</span>);
+  }
+}
+
+<span class="hljs-keyword">const</span> v = VehicleFactory.create(<span class="hljs-string">"voiture"</span>);
+v.drive();
+</code></pre>
+
+<h2 id="interfacesducktyping">Interfaces &amp; Duck Typing</h2>
+<p>Le Duck Typing : 'Si ça marche comme un canard et que ça cancane, alors c’est un canard'. En TypeScript, une interface n’impose pas la classe exacte, juste la forme (structure) attendue.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">interface</span> Flying {
+  fly(): <span class="hljs-built_in">void</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeMeFly</span>(<span class="hljs-params">obj:Flying</span>) </span>{
+  obj.fly();
+}
+
+<span class="hljs-comment">// avec un objet</span>
+<span class="hljs-keyword">const</span> bird = { fly: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"L'oiseau vole"</span>) };
+
+<span class="hljs-comment">// avec une classe </span>
+
+<span class="hljs-keyword">class</span> Boeing <span class="hljs-keyword">implements</span> Flying{
+    fly(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Le Boeing vole"</span>);
+    }
+}
+
+
+makeMeFly(bird); <span class="hljs-comment">// ✅ Pas besoin que `bird` implémente explicitement `Flying`</span>
+makeMeFly( <span class="hljs-keyword">new</span> Boeing()); 
+</code></pre>
+
+<h2 id="hritage">Héritage</h2>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">class</span> Personnage {
+    <span class="hljs-comment">// on veut transmettre cette propriété à nos enfants, on utilise donc protected</span>
+    <span class="hljs-keyword">protected</span> name: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">// on veut transmettre cette propriété à nos enfants, on utilise donc protected</span>
+    <span class="hljs-keyword">protected</span> lifepoint: <span class="hljs-built_in">number</span>;
+
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">param_name: <span class="hljs-built_in">string</span>, param_lifepoint: <span class="hljs-built_in">number</span></span>) {
+        <span class="hljs-keyword">this</span>.name = param_name;
+        <span class="hljs-keyword">this</span>.lifepoint = param_lifepoint;
+    }
+
+    <span class="hljs-comment">//  on doit pouvoir demander à un personnage s'il est mort</span>
+    <span class="hljs-comment">// sans être soi-même un personnage, la portée est donc publique</span>
+    <span class="hljs-keyword">public</span> isDead(): <span class="hljs-built_in">boolean</span> {
+        <span class="hljs-comment">// si le nombre de points de vie est inférieur </span>
+        <span class="hljs-comment">// ou égal à 0 alors le personnage est mort</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.lifepoint &lt;= <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        } 
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+    }
+
+    <span class="hljs-keyword">public</span> sayMyName():<span class="hljs-built_in">void</span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name);
+    }
+}
+</code></pre>
+
+<h2 id="hritage-1">Héritage</h2>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">class</span> Wizard <span class="hljs-keyword">extends</span> Personnage{
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"> </span>){
+        <span class="hljs-comment">// on peut invoquer le constructor de la classe parente à l'aide de "super"</span>
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">"Gandalf"</span>, <span class="hljs-number">100</span>);
+
+        <span class="hljs-comment">//... maintenant un nouvel objet de type wizard se nommera toujours </span>
+        <span class="hljs-comment">// Gandalf et aura 100 points de vie</span>
+    }
+
+    <span class="hljs-comment">// on réécrit la méthode sayMyName définit par le parent </span>
+    <span class="hljs-comment">// et héritée de celui-ci.</span>
+    <span class="hljs-keyword">public</span> sayMyName():<span class="hljs-built_in">void</span>{
+        <span class="hljs-comment">// mais on peut toujours invoquer l'ancienne "version" de la méthode</span>
+        <span class="hljs-comment">// toujours à l'aide de "super"</span>
+        <span class="hljs-keyword">super</span>.sayMyName();
+
+        <span class="hljs-comment">// si on veut, on peut ajouter des opérations supplémentaires</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I am a super magician !"</span>);
+    }
+}
+
+<span class="hljs-comment">// on crée un nouveau sorcier</span>
+<span class="hljs-keyword">let</span> gandalf:Wizard = <span class="hljs-keyword">new</span> Wizard();
+<span class="hljs-comment">// on crée un personnage Gollum qui possède 2 points de vie </span>
+<span class="hljs-keyword">let</span> gollum:Personnage = <span class="hljs-keyword">new</span> Personnage(<span class="hljs-string">"Gollum"</span>, <span class="hljs-number">2</span>);
+
+gandalf.sayMyName();
+gollum.sayMyName();
+</code></pre>
+
+<h2 id="hritagemultipleviamixins">Héritage multiple via Mixins</h2>
+<p>TypeScript n’autorise pas l’héritage multiple direct, mais on peut combiner plusieurs classes avec des mixins.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">type</span> Ctor&lt;T = {}&gt; = <span class="hljs-keyword">new</span> (...args: <span class="hljs-built_in">any</span>[]) =&gt; T;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Warrior</span>&lt;<span class="hljs-title">TBase</span> <span class="hljs-title">extends</span> <span class="hljs-title">Ctor</span>&gt;(<span class="hljs-params">Base: TBase</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">class</span> <span class="hljs-keyword">extends</span> Base {
+    fight() { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Baston !"</span>); }
+  };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GameCharacter</span>&lt;<span class="hljs-title">TBase</span> <span class="hljs-title">extends</span> <span class="hljs-title">Ctor</span>&gt;(<span class="hljs-params">Base: TBase</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">class</span> <span class="hljs-keyword">extends</span> Base {
+    introduce() { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Chui un barbare !"</span>); }
+  };
+}
+
+<span class="hljs-keyword">class</span> CharacterBase {}
+<span class="hljs-keyword">class</span> Barbarian <span class="hljs-keyword">extends</span> GameCharacter(Warrior(CharacterBase)) {}
+
+<span class="hljs-keyword">const</span> crom = <span class="hljs-keyword">new</span> Barbarian();
+crom.fight();
+crom.introduce();
+</code></pre>
+
+
+<h1 id="advancedtypes">Advanced types</h1>
+
+<h2 id="gestiondestypespersonnaliss">Gestion des types personnalisés</h2>
+<p>En TypeScript, on peut créer ses propres types pour :</p>
+<ul>
+<li>Simplifier le code</li>
+<li>Documenter l’intention</li>
+<li>Réutiliser une définition</li>
+</ul>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">type</span> ID = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;
+<span class="hljs-keyword">type</span> Point = { x: <span class="hljs-built_in">number</span>; y: <span class="hljs-built_in">number</span> };
+
+<span class="hljs-keyword">const</span> identifiant: ID = <span class="hljs-number">42</span>;
+<span class="hljs-keyword">const</span> position: Point = { x: <span class="hljs-number">10</span>, y: <span class="hljs-number">20</span> };
+
+<span class="hljs-comment">// ou </span>
+
+<span class="hljs-keyword">interface</span> Utilisateur {
+  nom: <span class="hljs-built_in">string</span>;
+  email: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> u: Utilisateur = { nom: <span class="hljs-string">"Alice"</span>, email: <span class="hljs-string">"alice@mail.com"</span> };
+
+<span class="hljs-comment">// type est plus flexible (permet unions, intersections), interface est extensible.</span>
+</code></pre>
+
+<h2 id="lesgnriques">Les génériques</h2>
+<p>Les génériques permettent de créer des structures ou fonctions qui fonctionnent avec n’importe quel type, tout en conservant la vérification.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// fonction générique</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">identity</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">value: T</span>): <span class="hljs-title">T</span> </span>{
+  <span class="hljs-keyword">return</span> value;
+}
+
+identity&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">"Hello"</span>); <span class="hljs-comment">// T = string</span>
+identity(<span class="hljs-number">42</span>); <span class="hljs-comment">// T est inféré comme number</span>
+
+
+<span class="hljs-comment">// classe générique</span>
+<span class="hljs-keyword">class</span> Box&lt;T&gt; {
+  <span class="hljs-keyword">private</span> content: T;
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">value: T</span>) {
+    <span class="hljs-keyword">this</span>.content = value;
+  }
+  getContent(): T {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.content;
+  }
+}
+
+<span class="hljs-keyword">const</span> box = <span class="hljs-keyword">new</span> Box&lt;<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">123</span>);
+<span class="hljs-built_in">console</span>.log(box.getContent()); <span class="hljs-comment">// number</span>
+
+<span class="hljs-keyword">const</span> boiteTexte = <span class="hljs-keyword">new</span> Box(<span class="hljs-string">"Bonjour"</span>); <span class="hljs-comment">// T inféré comme string</span>
+</code></pre>
+
+<h2 id="lesrestrictionsdestypesgnriques">Les restrictions des types génériques</h2>
+<p>On peut restreindre un générique avec extends pour n’accepter que certains types.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// Restriction à un type</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayLength</span>&lt;<span class="hljs-title">T</span> <span class="hljs-title">extends</span> </span>{ length: <span class="hljs-built_in">number</span> }&gt;(valeur: T) {
+  <span class="hljs-built_in">console</span>.log(valeur.length);
+}
+
+displayLength(<span class="hljs-string">"Hello"</span>); <span class="hljs-comment">// ✅ string a length</span>
+displayLength([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]); <span class="hljs-comment">// ✅ tableau a length</span>
+displayLength(<span class="hljs-number">42</span>); <span class="hljs-comment">// ❌ number n'a pas length</span>
+
+<span class="hljs-comment">// Restriction à une interface</span>
+<span class="hljs-keyword">interface</span> Nameable { myName: <span class="hljs-built_in">string</span>; }
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayMyName</span>&lt;<span class="hljs-title">T</span> <span class="hljs-title">extends</span> <span class="hljs-title">Nameable</span>&gt;(<span class="hljs-params">obj: T</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(obj.myName);
+}
+
+displayMyName({ myName: <span class="hljs-string">"Alice"</span>, age: <span class="hljs-number">30</span> }); <span class="hljs-comment">// ✅</span>
+</code></pre>
+
+
+<h1 id="lesdcorateurs">Les décorateurs</h1>
+
+<h2 id="lesdcorateursetlesmetadata">Les décorateurs et les 'MetaData'</h2>
+<p>En TypeScript, un décorateur est une fonction spéciale qui peut être attachée à :</p>
+<ul>
+<li>Une classe</li>
+<li>Une propriété</li>
+<li>Une méthode</li>
+<li>Un paramètre</li>
+</ul>
+<p><strong>Important :</strong> il faut installer le package <strong>reflect-metadata</strong> et activer les décorateurs dans tsconfig.json :</p>
+<ul>
+<li>Les décorateurs enrichissent le code sans le modifier directement</li>
+<li>Les factories permettent de les paramétrer</li>
+<li>reflect-metadata sert à stocker et lire des données attachées à des éléments</li>
+<li>On peut cibler classes, propriétés, méthodes, paramètres</li>
+<li>Idéal pour des patterns avancés : IoC, validation, logging, sécurité</li>
+</ul>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-string">"compilerOptions"</span>: {
+    <span class="hljs-string">"experimentalDecorators"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"emitDecoratorMetadata"</span>: <span class="hljs-literal">true</span>
+  }
+}
+</code></pre>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-keyword">import</span> <span class="hljs-string">"reflect-metadata"</span>;
+
+<span class="hljs-comment">// target étant l'objet auquel vous souhaitez ajouter des metadata</span>
+Reflect.defineMetadata(<span class="hljs-string">"role"</span>, <span class="hljs-string">"admin"</span>, target);
+
+<span class="hljs-comment">// target étant l'objet duquel vous souhaitez tirer des metadata</span>
+<span class="hljs-keyword">const</span> role = Reflect.getMetadata(<span class="hljs-string">"role"</span>, target);
+</code></pre>
+
+<h2 id="lesdcorateursfactories">Les décorateurs Factories</h2>
+<p>Un décorateur <strong>simple</strong> est une fonction, en revanche, un décorateur factory est une fonction qui retourne un décorateur, utile pour passer des paramètres.</p>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Logger</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">constructor: <span class="hljs-built_in">Function</span></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${message}</span> - <span class="hljs-subst">${constructor.name}</span> créé`</span>);
+  };
+}
+
+<span class="hljs-meta">@Logger</span>(<span class="hljs-string">"Création de la classe"</span>)
+<span class="hljs-keyword">class</span> Test {}
+<span class="hljs-comment">// Affiche : "Création de la classe - Test créé"</span>
+</code></pre>
+
+<h2 id="lesdiffrentstypesdedcorateurs">Les différents types de décorateurs</h2>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// décorateur de propriété</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Readonly</span>(<span class="hljs-params">target: <span class="hljs-built_in">any</span>, propertyKey: <span class="hljs-built_in">string</span></span>) </span>{
+  <span class="hljs-built_in">Object</span>.defineProperty(target, propertyKey, {writable: <span class="hljs-literal">false</span>});
+}
+ <span class="hljs-comment">// décorateur de paramètre</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LogParam</span>(<span class="hljs-params">target: <span class="hljs-built_in">any</span>, methodName: <span class="hljs-built_in">string</span>, paramIndex: <span class="hljs-built_in">number</span></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Paramètre #<span class="hljs-subst">${paramIndex}</span> de <span class="hljs-subst">${methodName}</span>`</span>);
+}
+
+<span class="hljs-comment">// décorateur de fonction/méthode</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LogMethodCall</span>(<span class="hljs-params">target: <span class="hljs-built_in">any</span>,propertyKey: <span class="hljs-built_in">string</span>,descriptor: PropertyDescriptor</span>) </span>{
+  <span class="hljs-keyword">const</span> func = descriptor.value;
+  descriptor.value = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...args: <span class="hljs-built_in">any</span>[]</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Appel de <span class="hljs-subst">${propertyKey}</span> avec`</span>, args);
+    <span class="hljs-keyword">return</span> func.apply(<span class="hljs-keyword">this</span>, args);
+  };
+}
+
+<span class="hljs-keyword">class</span> TestClass {
+    <span class="hljs-meta">@Readonly</span>
+    nom = <span class="hljs-string">"Fixe"</span>;
+
+    <span class="hljs-meta">@LogMethodCall</span>
+    helloWorld( <span class="hljs-meta">@LogParam</span> param:<span class="hljs-built_in">string</span>){ <span class="hljs-built_in">console</span>.log(param)}
+}
+
+<span class="hljs-keyword">const</span> e = <span class="hljs-keyword">new</span> TestClass();
+(e <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>).nom = <span class="hljs-string">"Test"</span>; <span class="hljs-comment">// Ignoré en mode strict</span>
+</code></pre>
+
+<h2 id="crerdesdcorateurspersonnaliss">Créer des décorateurs personnalisés</h2>
+<pre><code class="hljs typescript language-typescript"><span class="hljs-comment">// Exemple avec reflect-metadata pour stocker des infos sur une méthode</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"reflect-metadata"</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Role</span>(<span class="hljs-params">role: <span class="hljs-built_in">string</span></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">target: <span class="hljs-built_in">any</span>, key?: <span class="hljs-built_in">string</span></span>) </span>{
+    Reflect.defineMetadata(<span class="hljs-string">"role"</span>, role, target, key!);
+  };
+}
+
+<span class="hljs-keyword">class</span> AdminService {
+  <span class="hljs-meta">@Role</span>(<span class="hljs-string">"admin"</span>)
+  supprimer() {}
+}
+
+<span class="hljs-comment">// Lecture</span>
+<span class="hljs-keyword">const</span> role = Reflect.getMetadata(<span class="hljs-string">"role"</span>, AdminService.prototype, <span class="hljs-string">"supprimer"</span>);
+<span class="hljs-built_in">console</span>.log(role); <span class="hljs-comment">// "admin"</span>
+</code></pre>
+
+
+<h1 id="typescriptenpratique">TypeScript en pratique</h1>
+
+<h2 id="usageavecnodejs">Usage avec Node.js</h2>
+<p>TypeScript s’intègre parfaitement avec Node.js pour du développement serveur.</p>
+<pre><code class="hljs bash language-bash"><span class="hljs-comment"># installation</span>
+npm init -y
+npm install typescript ts-node @types/node --save-dev
+npx tsc --init
+
+
+<span class="hljs-comment"># en développement</span>
+npx ts-node src/index.ts
+
+<span class="hljs-comment"># en production</span>
+npx tsc
+node dist/index.js
+
+<span class="hljs-comment"># Utiliser ts-node-dev pour recharger automatiquement en développement.</span>
+npm install ts-node-dev --save-dev
+npx ts-node-dev src/index.ts
+</code></pre>
+<p>Exemple de tsconfig pour node js: </p>
+<pre><code class="hljs json language-json">{
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"ES2020"</span>,
+    <span class="hljs-attr">"module"</span>: <span class="hljs-string">"commonjs"</span>,
+    <span class="hljs-attr">"rootDir"</span>: <span class="hljs-string">"./src"</span>,
+    <span class="hljs-attr">"outDir"</span>: <span class="hljs-string">"./dist"</span>,
+    <span class="hljs-attr">"strict"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"esModuleInterop"</span>: <span class="hljs-literal">true</span>
+  }
+}
+</code></pre>
+
+<h2 id="livrerducodecompatiblejavascripttypescript">Livrer du code compatible JavaScript/Typescript</h2>
+<p>Si vous développez une librairie en TypeScript destinée à être utilisée par des projets JavaScript et TypeScript, il faut livrer :</p>
+<p>Le Javascript compilé</p>
+<p>Les définitions de types <strong>.d.ts</strong></p>
+<p>Exemple de configuration tsconfig.json pour une lib</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-string">"compilerOptions"</span>: {
+    <span class="hljs-string">"declaration"</span>: <span class="hljs-literal">true</span>,        <span class="hljs-comment">// Génère les fichiers .d.ts</span>
+    <span class="hljs-string">"declarationMap"</span>: <span class="hljs-literal">true</span>,     <span class="hljs-comment">// Génère les maps pour navigation</span>
+    <span class="hljs-string">"outDir"</span>: <span class="hljs-string">"./dist"</span>,
+    <span class="hljs-string">"target"</span>: <span class="hljs-string">"ES2019"</span>,
+    <span class="hljs-string">"module"</span>: <span class="hljs-string">"commonjs"</span>,
+    <span class="hljs-string">"esModuleInterop"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"strict"</span>: <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-string">"include"</span>: [<span class="hljs-string">"src/**/*"</span>]
+}
+</code></pre>
+<p>Arborescence du projet: </p>
+<pre><code class="hljs txt language-txt">/src
+  index<span class="hljs-selector-class">.ts</span>
+/dist
+  index<span class="hljs-selector-class">.js</span>       <span class="hljs-comment">// Code JS compilé</span>
+  index<span class="hljs-selector-class">.d</span><span class="hljs-selector-class">.ts</span>     <span class="hljs-comment">// Définitions de types</span>
+</code></pre>
+<p>Et on peut consommer la librairie normalement: </p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> { addition } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mylib"</span>);
+<span class="hljs-built_in">console</span>.log(addition(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>));
+</code></pre>
+
+		</body>
+	</html>
+	
