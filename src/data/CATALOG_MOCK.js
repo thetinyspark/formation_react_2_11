@@ -38,6 +38,14 @@ const CATALOG_MOCK = [
     "description": "A FPS game.",
     "img": "/assets/img/kart.png",
     "platform": "N64"
+  },
+  {
+    "id": 6,
+    "name": "Mario Kart 2",
+    "price": 25.0,
+    "description": "A FPS game.",
+    "img": "/assets/img/kart.png",
+    "platform": "N64"
   }
 ];
 
