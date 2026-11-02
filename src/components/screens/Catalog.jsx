@@ -1,48 +1,72 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import CatalogType from '../../types/CatalogType';
 import CatalogFilter from '../comp/CatalogFilter';
 import ProductCard from '../comp/ProductCard';
 import CatalogUtils from '../../utils/CatalogUtils';
 
 export default function Catalog({products}){
-    // useState renvoie un état, sous forme d'un tableau avec deux éléments
-    // le premier est la valeur que l'on peut consulter en lecture seule
-    // le deuxième est un élément nommé "dispatcher", que l'on peut appeler
-    // en lui donnant une nouvelle valeur pour le premier élement. 
-    // en invoquant le dispatcher, la valeur de notre état est changée, 
-    // et le moteur interne de React déclenche de nouveau, le rendu du composant. 
-    // cette syntaxe fonctionne, mais elle est peu intuitive
+    const [catalog, setCatalog] = useState(products);
+    const [currentPlatform, setCurrentPlatform] = useState(CatalogUtils.DEFAULT_PLATFORM);
+    const [currentPriceMin, setCurrentPriceMin] = useState(0);
+    const [currentPriceMax, setCurrentPriceMax] = useState(100);
+    const [currentName, setCurrentName] = useState("");
+
     
-    /*
-    const state = useState(platforms[0]); 
-    let filteredProducts = state[0];
-    let setFilteredProducts = state[1];
-    */
+    // à chaque fois que l'un des états change
+    // la fonction passée en paramètre de useMemo est relancée
+    const filteredProducts = useMemo( 
+        ()=>{
+            
+            let filtered = products.filter(
+                (product)=>{
+                    if( currentPlatform == CatalogUtils.DEFAULT_PLATFORM )
+                        return true;
 
-    // à la place on lui préférera le plus souvent la syntaxe destructurée 
-    const [filteredProducts, setFilteredProducts] = useState(products);
+                    return product.platform.toLowerCase().includes(currentPlatform.toLowerCase());
+                }
+            );
 
-    function onChangePlatform(platform){
-        console.log("selected platform : " + platform);
+            filtered = filtered.filter(
+                (product)=>{
+                    return product.name.toLowerCase().includes(currentName.toLowerCase());
+                }
+            ); 
 
-        // on construit un tableau de produits en se basant sur la plateforme
-        // insensible à la casse d'où la présence du toLowerCase()
-        const filtered = products.filter(
-            (product)=>{
-                if( platform == CatalogUtils.DEFAULT_PLATFORM )
-                    return true;
+            filtered = filtered.filter(
+                (product)=>{
+                    return product.price <= currentPriceMax;
+                }
+            ); 
 
-                return product.platform.toLowerCase().includes(platform.toLowerCase());
-            }
-        );
+            filtered = filtered.filter(
+                (product)=>{
+                    return product.price >= currentPriceMin;
+                }
+            ); 
 
-        // puis on rédéfinit l'état de notre filteredProducts que l'on utilise afin d'afficher les produits
-        setFilteredProducts(filtered);
-    }
+            return filtered;
+        }, 
+        [catalog, currentPlatform, currentName, currentPriceMax, currentPriceMin]
+    ); 
+
+    const numProduits = useMemo( 
+        ()=>{
+            return filteredProducts.length;
+        }, 
+        [filteredProducts]
+    )
+
 
     return (
         <>
-        <CatalogFilter products={products} onChangePlatform={onChangePlatform} />
+        <CatalogFilter  products={catalog} 
+                        onChangePlatform={setCurrentPlatform} 
+                        onChangePriceMax={setCurrentPriceMax}
+                        onChangePriceMin={setCurrentPriceMin}
+                        onChangeName={setCurrentName}
+                        />
+
+        <p>Il y a {numProduits} produit(s) trouvé(s) d'après votre recherche</p>
         {
             filteredProducts.map(
                 (product)=>{

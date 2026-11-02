@@ -2,7 +2,15 @@ import { useState } from 'react';
 import CatalogType from '../../types/CatalogType';
 import CatalogUtils from '../../utils/CatalogUtils';
 
-export default function CatalogFilter({products, onChangePlatform}){
+export default function CatalogFilter(
+    {
+        products, 
+        onChangePlatform, 
+        onChangePriceMin,
+        onChangePriceMax,
+        onChangeName,
+    }
+){
 
     const platforms = CatalogUtils.getUniquePlatformsFromProducts(products);
 
@@ -23,6 +31,18 @@ export default function CatalogFilter({products, onChangePlatform}){
                 )
             }
             </select>
+            <br/>
+
+            <label>Nom: </label>
+            <input type="text" onChange={(e)=> onChangeName(e.target.value)}/>
+            <br/>
+
+            <label>Prix min: </label>
+            <input type="number" onChange={(e)=> onChangePriceMin(e.target.value)}/>
+            <br/>
+            <label>Prix max: </label>
+            <input type="number" onChange={(e)=> onChangePriceMax(e.target.value)}/>
+            <br/>
         </div>
     )
 }
