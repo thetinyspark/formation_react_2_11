@@ -34,14 +34,7 @@ export default function GameProvider({children}){
                     setCart( [...cart, {...product}] );
                 }, 
                 removeFromCart: (product)=>{
-                    // première façon de faire
-                    // const pos = cart.indexOf(product);
-                    // cart.splice(pos, 1);
-
-                    // deuxième façon de faire
-                    const toRemoveProduct = cart.find( (p)=>p.id == product.id) || null;
-                    const newCart = cart.filter( (p)=>p!==toRemoveProduct);
-
+                    const newCart = cart.filter( (p)=>p!==product);
                     setCart(newCart);
                 }, 
                 getTotalPriceHT: getTotalPriceHT,
