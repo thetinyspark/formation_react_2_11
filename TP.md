@@ -1,16 +1,17 @@
-TP n°7
+TP n°8
 
-- Créez un composant nommé AppNav.jsx et déplacez-y l'ensemble des liens de navigation 
+- Au sein de votre ProductCard.jsx créez deux modes d'affichage, pilotables depuis l'extérieur via une props nommé detailed ( qui vaut soit true soit false ), un mode de visualisation "détaillé" ou non du produit. 
 
-```html        
-<nav>
-    <ul>
-    <li><Link to="/">Accueil</Link></li>
-    <li><Link to="/catalog">Boutique</Link></li>
-    </ul>
-</nav>
-```
+- En mode détaillé, le produit permet de visualiser l'intégralité des informations
+du produit. 
 
-- Au sein du composant App.jsx, ajoutez le composant AppNav
-- Puis au sein du composant AppNav, ajoutez un lien qui vous emmène vers une page nommée Cart
-- Créez donc le composant ( de type écran ), nommé Cart.jsx
+- En mode non détaillé, le produit permet de visualiser uniquement, le nom, l'image et le prix du produit. 
+
+- En monde non détaillé, le produit affiche un lien permettant d'aller visualiser la page du produit détaillé. 
+
+
+- Créez une page ProductDetailedPage.jsx, puis ajoutez-y un paramètre nommé :id. 
+Au sein de cette page, trouvez le produit qui porte passé en paramètre, puis affichez-le en mode détaillé. 
+
+
+BONUS: En mode détaillé, vous pouvez ajouter un bouton "ajouter au panier" en prévision du prochain exercice.
