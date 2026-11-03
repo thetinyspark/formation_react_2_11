@@ -3,11 +3,15 @@ import CatalogFilter from '../comp/CatalogFilter';
 import ProductCard from '../comp/ProductCard';
 import CatalogUtils from '../../utils/CatalogUtils';
 import useGameStore from '../hooks/useGameStore';
+import useReduxStore from '../hooks/useReduxStore';
 
 export default function Catalog(){
 
 
-    const {catalog} = useGameStore();
+    // const {catalog} = useGameStore();
+    const {games} = useReduxStore();
+    const catalog = games;
+    
     const [currentPlatform, setCurrentPlatform] = useState(CatalogUtils.DEFAULT_PLATFORM);
     const [currentPriceMin, setCurrentPriceMin] = useState(0);
     const [currentPriceMax, setCurrentPriceMax] = useState(100);

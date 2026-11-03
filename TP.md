@@ -1,6 +1,17 @@
-TP n°9 - BONUS
+TP n°10 
 
-- Remplir les fonctions non complétées au sein de GameProvider.jsw et au sein de Cart.jsx.
-- Et au sein de Cart.jsx affichez le total HT et le total TTC.
+# Partie I
+
+Au sein des composants:  
+- ProductDetailedPage.jsx 
+- Cart.jsx
+- ProductCard.jsx
+
+Utilisez le redux Store plutôt que le gameStore
+
+# Partie II ( BONUS )
+
+Etendez le redux store au cart et ajoutez les fonctionnalités
+nécessaires au bon fonctionnement du cart comme dans le gameStore
 
 
