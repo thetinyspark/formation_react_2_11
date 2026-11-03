@@ -2,18 +2,24 @@ import ProductCard from '../comp/ProductCard';
 import useGameStore from '../hooks/useGameStore';
 
 export default function Cart(){
-    const {cart} = useGameStore();
-    return cart.map( 
+    const {cart, removeFromCart, getTotalPriceHT, getTotalPriceTTC} = useGameStore();
+    return <>
+        {
+            cart.map( 
                 (product)=>{
                     return <div>
                         <ProductCard product={product} detailed={false} />
                         <button onClick={
                             (event)=>{
-                                /*remplir  ce bout de code */
+                                removeFromCart(product);
                             }
-                         }>X</button>
+                        }>X</button>
                     </div>
                 }
-            );
+            )
+        }
+        <p>Total HT: {getTotalPriceHT()}</p>
+        <p>Total TTC: {getTotalPriceTTC()}</p>
+            </>
 }
 

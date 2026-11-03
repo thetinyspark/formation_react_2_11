@@ -18,7 +18,6 @@ export default function ProductCard({product, detailed}){
                     <p>Plateforme: {product.platform}</p>
                     <button onClick={
                         ()=>{
-                            console.log("add to cart 1");
                             addToCart(product);
                         }
                     }>Ajouter au panier</button>

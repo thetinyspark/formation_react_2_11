@@ -7,8 +7,21 @@ export default function GameProvider({children}){
     const [catalog, setCatalog] = useState([]);
     const [cart, setCart] = useState([]);
 
-    // ici par exemple, on pourrait créer un panier et son dispatcher
-    // et les partager via le useMemo
+
+    function getTotalPriceHT(){
+        const total = cart.reduce( 
+            (prev, p)=>{
+                return prev + p.price;
+            }, 
+            0
+        )
+        
+        return total.toFixed(2);
+    }
+
+    function getTotalPriceTTC(){
+        return (getTotalPriceHT() * 1.2).toFixed(2);
+    }
 
     const store = useMemo(
         ()=>{
@@ -18,20 +31,21 @@ export default function GameProvider({children}){
                 setCatalog: setCatalog, 
                 cart: cart, 
                 addToCart: (product)=>{
-                    console.log("add to cart 2" + product);
-                    setCart( [...cart, product] );
+                    setCart( [...cart, {...product}] );
                 }, 
                 removeFromCart: (product)=>{
-                    // vous devrez remplir cette fonction
+                    // première façon de faire
+                    // const pos = cart.indexOf(product);
+                    // cart.splice(pos, 1);
+
+                    // deuxième façon de faire
+                    const toRemoveProduct = cart.find( (p)=>p.id == product.id) || null;
+                    const newCart = cart.filter( (p)=>p!==toRemoveProduct);
+
+                    setCart(newCart);
                 }, 
-                getTotalPriceHT: ()=>{
-                    // vous devrez changer cette fonction
-                    return 0;
-                }, 
-                getTotalPriceTTC: ()=>{
-                    // vous devrez changer cette fonction (TVA 20%)
-                    return 0;
-                }
+                getTotalPriceHT: getTotalPriceHT,
+                getTotalPriceTTC: getTotalPriceTTC
             };
         }, 
         [catalog, cart]
