@@ -10,7 +10,6 @@ export default function AppNav(){
             <li><Link to="/">Accueil</Link></li>
             <li><Link to="/catalog">Boutique</Link></li>
             <li><Link to="/cart">Panier</Link></li>
-            <li><Link to={"/params/" + id}>Exemple</Link></li>
           </ul>
         </nav>
     )

@@ -98,7 +98,7 @@ export default function Catalog(){
             filteredProducts.map(
                 (product)=>{
                     return ( 
-                        <ProductCard product={product} key={product.id} />
+                        <ProductCard product={product} key={product.id} detailed={false} />
                     )
                 }
             )
