@@ -1,14 +1,18 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import CatalogFilter from '../comp/CatalogFilter';
 import ProductCard from '../comp/ProductCard';
 import CatalogUtils from '../../utils/CatalogUtils';
+import useGameStore from '../hooks/useGameStore';
 
 export default function Catalog(){
+
+
+    const {catalog} = useGameStore();
     const [currentPlatform, setCurrentPlatform] = useState(CatalogUtils.DEFAULT_PLATFORM);
     const [currentPriceMin, setCurrentPriceMin] = useState(0);
     const [currentPriceMax, setCurrentPriceMax] = useState(100);
     const [currentName, setCurrentName] = useState("");
-    const [catalog,setCatalog] = useState([]);
+    // const [catalog,setCatalog] = useState([]);
 
     // à chaque fois que l'un des états change
     // la fonction passée en paramètre de useMemo est relancée
@@ -47,41 +51,6 @@ export default function Catalog(){
         [currentPlatform, currentName, currentPriceMax, currentPriceMin, catalog]
     ); 
 
-    const numProduits = useMemo( 
-        ()=>{
-            return filteredProducts.length;
-        }, 
-        [filteredProducts]
-    );
-
-    useEffect( 
-
-        ()=>{
-            const getDataFormUrl = async (url) =>{
-                try{
-                    const response = await window.fetch(url);
-                    const data = await response.json();
-                    return data;
-                }
-                catch(error){
-                    console.error(error);
-                }
-            }
-
-            const refresh = async()=>{
-                try{
-                    const catalogData = await getDataFormUrl("/assets/catalog.json");
-                    setCatalog(catalogData); 
-                }
-                catch(error){ 
-                    console.error(error) 
-                }
-            }
-
-            refresh();
-        }, 
-        []
-    )
 
 
     return (
@@ -93,7 +62,6 @@ export default function Catalog(){
                         onChangeName={setCurrentName}
                         />
 
-        <p>Il y a {numProduits} produit(s) trouvé(s) d'après votre recherche</p>
         {
             filteredProducts.map(
                 (product)=>{
