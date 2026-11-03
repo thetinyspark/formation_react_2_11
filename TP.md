@@ -1,7 +1,16 @@
-TP n°6
+TP n°7
 
-- Au sein du composant App.jsx téléchargez, à l'aide de useEffect, un fichier que vous créerez
-pour l'occasion, nommé "promo.json" (mettez-le au même endroit le catalog.json)
+- Créez un composant nommé AppNav.jsx et déplacez-y l'ensemble des liens de navigation 
 
-- Une fois les informations obtenues, créez un composant Promo.jsx, passez lui les infos
-du produit en question, et affichez-les à l'écran.
+```html        
+<nav>
+    <ul>
+    <li><Link to="/">Accueil</Link></li>
+    <li><Link to="/catalog">Boutique</Link></li>
+    </ul>
+</nav>
+```
+
+- Au sein du composant App.jsx, ajoutez le composant AppNav
+- Puis au sein du composant AppNav, ajoutez un lien qui vous emmène vers une page nommée Cart
+- Créez donc le composant ( de type écran ), nommé Cart.jsx

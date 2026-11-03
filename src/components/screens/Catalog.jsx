@@ -1,24 +1,21 @@
-import { useMemo, useState } from 'react';
-import CatalogType from '../../types/CatalogType';
+import { useEffect, useMemo, useState } from 'react';
 import CatalogFilter from '../comp/CatalogFilter';
 import ProductCard from '../comp/ProductCard';
 import CatalogUtils from '../../utils/CatalogUtils';
 
-export default function Catalog({products}){
-
-    const catalog = products;
+export default function Catalog(){
     const [currentPlatform, setCurrentPlatform] = useState(CatalogUtils.DEFAULT_PLATFORM);
     const [currentPriceMin, setCurrentPriceMin] = useState(0);
     const [currentPriceMax, setCurrentPriceMax] = useState(100);
     const [currentName, setCurrentName] = useState("");
+    const [catalog,setCatalog] = useState([]);
 
-    
     // à chaque fois que l'un des états change
     // la fonction passée en paramètre de useMemo est relancée
     const filteredProducts = useMemo( 
         ()=>{
             
-            let filtered = products.filter(
+            let filtered = catalog.filter(
                 (product)=>{
                     if( currentPlatform == CatalogUtils.DEFAULT_PLATFORM )
                         return true;
@@ -47,7 +44,7 @@ export default function Catalog({products}){
 
             return filtered;
         }, 
-        [currentPlatform, currentName, currentPriceMax, currentPriceMin]
+        [currentPlatform, currentName, currentPriceMax, currentPriceMin, catalog]
     ); 
 
     const numProduits = useMemo( 
@@ -56,6 +53,35 @@ export default function Catalog({products}){
         }, 
         [filteredProducts]
     );
+
+    useEffect( 
+
+        ()=>{
+            const getDataFormUrl = async (url) =>{
+                try{
+                    const response = await window.fetch(url);
+                    const data = await response.json();
+                    return data;
+                }
+                catch(error){
+                    console.error(error);
+                }
+            }
+
+            const refresh = async()=>{
+                try{
+                    const catalogData = await getDataFormUrl("/assets/catalog.json");
+                    setCatalog(catalogData); 
+                }
+                catch(error){ 
+                    console.error(error) 
+                }
+            }
+
+            refresh();
+        }, 
+        []
+    )
 
 
     return (
@@ -80,8 +106,4 @@ export default function Catalog({products}){
         </>
     );
 }
-
-Catalog.propTypes = {
-    products: CatalogType
-};
 
