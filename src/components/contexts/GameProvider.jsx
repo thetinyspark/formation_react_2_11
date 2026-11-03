@@ -3,12 +3,18 @@ import GameContext from "./GameContext";
 
 export default function GameProvider({children}){
 
+    // ici on crée l'état catalog et son dispatcher
     const [catalog, setCatalog] = useState([]);
+
+    // ici par exemple, on pourrait créer un panier et son dispatcher
+    // et les partager via le useMemo
 
     const store = useMemo(
         ()=>{
+            // ici on partage les données qui seront accessibles à travers l'application
             return {
-                catalog: catalog
+                catalog: catalog, 
+                setCatalog: setCatalog
             };
         }, 
         [catalog]

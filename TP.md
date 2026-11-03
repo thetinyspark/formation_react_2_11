@@ -1,16 +1,11 @@
-TP n°8
+TP n°9
 
-- Au sein de votre ProductCard.jsx créez deux modes d'affichage, pilotables depuis l'extérieur via une props nommé detailed ( qui vaut soit true soit false ), un mode de visualisation "détaillé" ou non du produit. 
+- Au sein du GameProvider.jsx, créez un nouvel état et son dispatcher associé, nommés
+cart et setCart, ils sont destinés à contenir les produits qui composeront notre panier. 
 
-- En mode détaillé, le produit permet de visualiser l'intégralité des informations
-du produit. 
-
-- En mode non détaillé, le produit permet de visualiser uniquement, le nom, l'image et le prix du produit. 
-
-- En monde non détaillé, le produit affiche un lien permettant d'aller visualiser la page du produit détaillé.
-
-- Créez une page ProductDetailedPage.jsx, puis ajoutez-y un paramètre nommé :id. 
-Au sein de cette page, trouvez le produit qui porte passé en paramètre, puis affichez-le en mode détaillé. 
+- Au sein de la page Cart.jsx, affichez les produits contenus dans le panier
+- Au sein de la vue détaillée du composant ProductPage.jsx, ajoutez une fonctionnalité, 
+au click sur le bouton "ajouter au panier" et envoyez le produit correspondant au sein
+du panier. 
 
 
-BONUS: En mode détaillé, vous pouvez ajouter un bouton "ajouter au panier" en prévision du prochain exercice.
