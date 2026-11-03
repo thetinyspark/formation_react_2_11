@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import ProductType from "../../types/ProductType"
+import useGameStore from "../hooks/useGameStore";
 
 export default function ProductCard({product, detailed}){
+
+    const {addToCart} = useGameStore();
+
     return ( 
         <div className="product">
             <h2>{product.name}</h2>
@@ -12,7 +16,12 @@ export default function ProductCard({product, detailed}){
                 <>
                     <p>{product.description}</p>
                     <p>Plateforme: {product.platform}</p>
-                    <button>Ajouter au panier</button>
+                    <button onClick={
+                        ()=>{
+                            console.log("add to cart 1");
+                            addToCart(product);
+                        }
+                    }>Ajouter au panier</button>
                 </>
             }
 
