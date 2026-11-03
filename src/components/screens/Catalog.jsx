@@ -9,9 +9,7 @@ export default function Catalog(){
 
 
     // const {catalog} = useGameStore();
-    const {games} = useReduxStore();
-    const catalog = games;
-    
+    const {catalog} = useReduxStore();
     const [currentPlatform, setCurrentPlatform] = useState(CatalogUtils.DEFAULT_PLATFORM);
     const [currentPriceMin, setCurrentPriceMin] = useState(0);
     const [currentPriceMax, setCurrentPriceMax] = useState(100);

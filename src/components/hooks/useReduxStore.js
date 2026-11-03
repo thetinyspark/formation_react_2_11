@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {setGames} from "../reducer/gamesReducer";
+import {setCart, addToCart, removeFromCart} from "../reducer/cartReducer";
 
 export default function useReduxStore(){
     // le dispatcher va prendre une action du reducer en paramètre
@@ -9,9 +10,8 @@ export default function useReduxStore(){
     // où il en a besoin
 
     const dispatch = useDispatch();
-    const {games} = useSelector(
-        (state)=>state.games
-    );
+    const {games} = useSelector((state)=>state.games);
+    const {cart} = useSelector((state)=>state.cart);
 
     useEffect(
         ()=>{
@@ -25,8 +25,29 @@ export default function useReduxStore(){
         []
     );
 
+    function getTotalPriceHT(){
+        const total = cart.reduce( 
+            (prev, p)=>{
+                return prev + p.price;
+            }, 
+            0
+        )
+        
+        return total.toFixed(2);
+    }
+
+    function getTotalPriceTTC(){
+        return (getTotalPriceHT() * 1.2).toFixed(2);
+    }
+
     return {
-        games, 
-        setGames: (products) => dispatch( setGames(products))
+        catalog: games, 
+        cart, 
+        setGames:       (products)  => dispatch( setGames(products)), 
+        addToCart:      (product)   => dispatch( addToCart(product)),
+        removeFromCart: (product)   => dispatch( removeFromCart(product)),
+        setCart:        (product)   => dispatch( setCart(product)),
+        getTotalPriceHT, 
+        getTotalPriceTTC
     }
 }
