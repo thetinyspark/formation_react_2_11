@@ -7,7 +7,7 @@ export default class CatalogUtils{
         // crée à partir de la liste des produits
         let platforms = products.map( 
             (product) => {
-            return product.platform;
+                return product.platform;
             }
         ); 
         // Set permet de trier les doublons
