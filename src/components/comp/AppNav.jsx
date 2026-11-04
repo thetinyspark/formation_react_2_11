@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function AppNav(){
-
-    const id = Math.round( Math.random() * 1000 );
-
     return (
         <nav>
           <ul>
