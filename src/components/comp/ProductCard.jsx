@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import ProductType from "../../types/ProductType"
 import useGameStore from "../hooks/useGameStore";
-import useReduxStore from "../hooks/useReduxStore";
 
 export default function ProductCard({product, detailed}){
 
-    // const {addToCart} = useGameStore();
-    const {addToCart} = useReduxStore();
+    const {addToCart} = useGameStore();
 
     return ( 
         <div className="product">

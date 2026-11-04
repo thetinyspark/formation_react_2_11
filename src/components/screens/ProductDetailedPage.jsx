@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import ProductCard from "../comp/ProductCard";
-import useReduxStore from "../hooks/useReduxStore";
+import useGameStore from "../hooks/useGameStore";
 
 export default function ProductDetailedPage(){
-    const {catalog} = useReduxStore();
+    const {catalog} = useGameStore();
     const {id} = useParams();
     const product = catalog.find( (product) => product.id == parseInt(id)) || null;
 

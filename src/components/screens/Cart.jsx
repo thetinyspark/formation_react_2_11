@@ -1,10 +1,8 @@
 import ProductCard from '../comp/ProductCard';
 import useGameStore from '../hooks/useGameStore';
-import useReduxStore from '../hooks/useReduxStore';
 
 export default function Cart(){
-    // const {cart, removeFromCart, getTotalPriceHT, getTotalPriceTTC} = useGameStore();
-    const {cart, removeFromCart, getTotalPriceHT, getTotalPriceTTC} = useReduxStore();
+    const {cart, removeFromCart, getTotalPriceHT, getTotalPriceTTC} = useGameStore();
     return <>
             {
                 cart.map( 

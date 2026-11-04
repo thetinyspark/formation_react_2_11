@@ -3,13 +3,11 @@ import CatalogFilter from '../comp/CatalogFilter';
 import ProductCard from '../comp/ProductCard';
 import CatalogUtils from '../../utils/CatalogUtils';
 import useGameStore from '../hooks/useGameStore';
-import useReduxStore from '../hooks/useReduxStore';
 
 export default function Catalog(){
 
 
-    // const {catalog} = useGameStore();
-    const {catalog} = useReduxStore();
+    const {catalog} = useGameStore();
     const [currentPlatform, setCurrentPlatform] = useState(CatalogUtils.DEFAULT_PLATFORM);
     const [currentPriceMin, setCurrentPriceMin] = useState(0);
     const [currentPriceMax, setCurrentPriceMax] = useState(100);
@@ -20,35 +18,13 @@ export default function Catalog(){
     // la fonction passée en paramètre de useMemo est relancée
     const filteredProducts = useMemo( 
         ()=>{
-            
-            let filtered = catalog.filter(
-                (product)=>{
-                    if( currentPlatform == CatalogUtils.DEFAULT_PLATFORM )
-                        return true;
-
-                    return product.platform.toLowerCase().includes(currentPlatform.toLowerCase());
-                }
+            return CatalogUtils.filterProducts(
+                catalog, 
+                currentName, 
+                currentPlatform, 
+                currentPriceMin,
+                currentPriceMax,
             );
-
-            filtered = filtered.filter(
-                (product)=>{
-                    return product.name.toLowerCase().includes(currentName.toLowerCase());
-                }
-            ); 
-
-            filtered = filtered.filter(
-                (product)=>{
-                    return product.price <= currentPriceMax;
-                }
-            ); 
-
-            filtered = filtered.filter(
-                (product)=>{
-                    return product.price >= currentPriceMin;
-                }
-            ); 
-
-            return filtered;
         }, 
         [currentPlatform, currentName, currentPriceMax, currentPriceMin, catalog]
     ); 
