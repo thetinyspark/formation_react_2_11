@@ -16,4 +16,38 @@ export default class CatalogUtils{
         results.unshift(this.DEFAULT_PLATFORM);
         return results;
     }
+
+    static filterProductsByName(products, search){
+        return products.filter(
+                (product)=>{
+                    return product.name.toLowerCase().includes(search.toLowerCase());
+                }
+        ); 
+    }
+
+    static filterProductsByPrice(products, priceMin = -Infinity, priceMax = Infinity){
+        return products.filter(
+                (product)=>{
+                    return product.price >= priceMin && product.price <= priceMax;
+                }
+        ); 
+    }
+
+    static filterProductsByPlatform(products, platform){
+        if( platform === this.DEFAULT_PLATFORM)
+            return products;
+
+        return products.filter(
+            (product)=>{
+                return product.platform.includes(platform);
+            }
+        );
+    }
+
+    static filterProducts(products, name, platform, priceMin, priceMax){
+        let filtered = this.filterProductsByName(products, name); 
+        filtered = this.filterProductsByPlatform(filtered, platform); 
+        filtered = this.filterProductsByPrice(filtered, priceMin, priceMax); 
+        return filtered;
+    }
 }
