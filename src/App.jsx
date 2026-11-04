@@ -1,4 +1,5 @@
 import PageHeader from './components/comp/PageHeader';
+import PageHeaderClass from './components/comp/PageHeaderClass';
 import Catalog from './components/screens/Catalog';
 import Cart from './components/screens/Cart';
 import Home from './components/screens/Home';
@@ -11,6 +12,7 @@ export default function App() {
   return (
     <>
       <main className="app-shell">
+        <PageHeaderClass/>
         <PageHeader/>
         <AppNav />
         <Routes>
