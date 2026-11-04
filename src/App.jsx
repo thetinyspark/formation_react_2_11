@@ -1,11 +1,7 @@
 import PageHeader from './components/comp/PageHeader';
 import PageHeaderClass from './components/comp/PageHeaderClass';
-import Catalog from './components/screens/Catalog';
-import Cart from './components/screens/Cart';
-import Home from './components/screens/Home';
-import { Route, Routes } from 'react-router-dom';
 import AppNav from './components/comp/AppNav';
-import ProductDetailedPage from './components/screens/ProductDetailedPage';
+import Routing from './components/Routing';
 
 
 export default function App() {
@@ -15,12 +11,7 @@ export default function App() {
         <PageHeaderClass/>
         <PageHeader/>
         <AppNav />
-        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/catalog' element={<Catalog />}/>
-          <Route path='/cart' element={<Cart />}/>
-          <Route path='/product/:id' element={<ProductDetailedPage />}/>
-        </Routes>
+        <Routing />
       </main>
       <footer className="course-note">Footer</footer>
     </>
