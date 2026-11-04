@@ -7,7 +7,7 @@ export default function ProductCard({product, detailed}){
     const {addToCart} = useGameStore();
 
     return ( 
-        <div className="product">
+        <div className="product" data-testid={`product_${product.id}`}>
             <h2>{product.name}</h2>
             <img src={product.img} />
             <p>Prix: {product.price}€</p>

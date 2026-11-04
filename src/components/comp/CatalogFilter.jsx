@@ -15,13 +15,13 @@ export default function CatalogFilter(
 
     return (
         <div>
-            <select onChange={
+            <select data-testid="platform" onChange={
                 (event)=>{
                     onChangePlatform(event.target.value);
                 }
             }>
             {
-                platforms.map( 
+            platforms.map( 
                     (platform, index)=>{
                         return (
                             <option value={platform} key={index}>{platform}</option>
@@ -33,14 +33,14 @@ export default function CatalogFilter(
             <br/>
 
             <label>Nom: </label>
-            <input type="text" onChange={(e)=> onChangeName(e.target.value)}/>
+            <input type="text" data-testid="pname" onChange={(e)=> onChangeName(e.target.value)}/>
             <br/>
 
             <label>Prix min: </label>
-            <input type="number" onChange={(e)=> onChangePriceMin(e.target.value)}/>
+            <input type="number" data-testid="pricemin" onChange={(e)=> onChangePriceMin(e.target.value)}/>
             <br/>
             <label>Prix max: </label>
-            <input type="number" onChange={(e)=> onChangePriceMax(e.target.value)}/>
+            <input type="number" data-testid="pricemax" onChange={(e)=> onChangePriceMax(e.target.value)}/>
             <br/>
         </div>
     )
