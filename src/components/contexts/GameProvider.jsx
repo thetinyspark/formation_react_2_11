@@ -69,7 +69,7 @@ export default function GameProvider({children}){
 
             refresh();
         }, 
-        []
+        [] // <- ne s'éxécute qu'au montage du composant
     )
 
     // children est la props standard de react qui contient l'ensemble des 
