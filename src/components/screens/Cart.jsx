@@ -8,9 +8,9 @@ export default function Cart(){
     return <>
             {
                 cart.map( 
-                    (product)=>{
-                        return <div>
-                            <ProductCard product={product} detailed={false} />
+                    (product, index)=>{
+                        return <div key={index}>
+                            <ProductCard product={product} detailed={false}/>
                             <button onClick={
                                 (event)=>{
                                     removeFromCart(product);
